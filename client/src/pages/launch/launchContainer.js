@@ -1,11 +1,11 @@
-import Launch from './launch';
+import LaunchPage from './launchPage';
 import { useQuery } from '@apollo/react-hooks';
 import { pipe, mapProps } from '@synvox/rehook';
 import { GET_LAUNCH_DETAILS } from './launchQuery';
 
 const launchHOC = mapProps(props => {
   const { launchId } = props;
-  console.log('Mapping Launch', launchId);
+  console.log('Mapping Launch', props);
 
   return {
     launchQuery: useQuery(GET_LAUNCH_DETAILS, {
@@ -16,7 +16,7 @@ const launchHOC = mapProps(props => {
 
 const enhance = pipe(
   launchHOC,
-  Launch
+  LaunchPage
 );
 
 export default enhance;

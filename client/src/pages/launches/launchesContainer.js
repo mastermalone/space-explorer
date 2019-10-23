@@ -1,7 +1,8 @@
-import Launches from './launches';
+import LaunchesPage from './launchesPage';
 import { GET_LAUNCHES } from './launchesQuery';
 import { useQuery } from '@apollo/react-hooks';
 import { pipe, mapProps } from '@synvox/rehook';
+import useContainer from '../../services/container';
 
 const launchesHOC = mapProps(props => {
   console.log('Base props', props);
@@ -11,9 +12,21 @@ const launchesHOC = mapProps(props => {
   };
 });
 
+const container = useContainer({
+  launchesQuery: {
+    hook: useQuery,
+    params: GET_LAUNCHES,
+  },
+  launchesQuery2: {
+    hook: useQuery,
+    params: GET_LAUNCHES,
+  },
+})(LaunchesPage);
+
 const enhance = pipe(
   launchesHOC,
-  Launches
+  LaunchesPage
 );
 
-export default enhance;
+export default container;
+// export default enhance;

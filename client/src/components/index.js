@@ -8,3 +8,5 @@ export { default as LoginForm } from './login-form';
 export { default as MenuItem } from './menu-item';
 export { default as PageContainer } from './page-container';
 export { default as LoadingOrError } from './loadingOrError';
+export { default as Launch } from './launch';
+export { default as Launches } from './launches';
